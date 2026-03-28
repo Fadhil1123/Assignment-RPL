@@ -22,7 +22,9 @@ a. Links to relevant commits/issues
 > 
 > Commit: `0f9c1dc` (week7 task1: add endpoint validation and error handling)
 >
-> PR: TODO (to be added after opening PR)
+> Compare URL: `https://github.com/Fadhil1123/Assignment-RPL/compare/master...feat/week7-task1-endpoints-validations?expand=1`
+>
+> PR: `https://github.com/Fadhil1123/Assignment-RPL/pull/2`
 
 b. PR Description
 > Implemented additional API endpoints and stricter validation/error handling across notes and action-items routes.
@@ -48,7 +50,9 @@ a. Links to relevant commits/issues
 >
 > Commit: `5c3741e` (week7 task2: extend extraction patterns and dedup logic)
 >
-> PR: TODO (to be added after opening PR)
+> Compare URL: `https://github.com/Fadhil1123/Assignment-RPL/compare/feat/week7-task1-endpoints-validations...feat/week7-task2-extend-extraction?expand=1`
+>
+> PR: `https://github.com/Fadhil1123/Assignment-RPL/pull/1`
 
 b. PR Description
 > Extended extraction logic to detect action items using richer patterns and reduce duplicates.
@@ -73,7 +77,9 @@ a. Links to relevant commits/issues
 >
 > Commit: `56c347a` (week7 task3: add project model relationships and project endpoints)
 >
-> PR: TODO (to be added after opening PR)
+> Compare URL: `https://github.com/Fadhil1123/Assignment-RPL/compare/feat/week7-task2-extend-extraction...feat/week7-task3-project-model-relationship?expand=1`
+>
+> PR: `https://github.com/Fadhil1123/Assignment-RPL/pull/3`
 
 b. PR Description
 > Added a new `Project` model and linked it to existing entities.
@@ -100,7 +106,9 @@ a. Links to relevant commits/issues
 >
 > Commit: `dac39bb` (week7 task4: improve pagination and sorting test coverage)
 >
-> PR: TODO (to be added after opening PR)
+> Compare URL: `https://github.com/Fadhil1123/Assignment-RPL/compare/feat/week7-task3-project-model-relationship...feat/week7-task4-pagination-sorting-tests?expand=1`
+>
+> PR: `https://github.com/Fadhil1123/Assignment-RPL/pull/4`
 
 b. PR Description
 > Expanded test coverage for pagination and sorting behavior on notes, action-items, and projects.
