@@ -42,7 +42,12 @@ b. PR Description
 > - Result: all tests passed.
 
 c. Graphite Diamond generated code review
-> TODO after Graphite run: add 2-4 key comments, mark which ones were accepted, and note any false positives.
+> Graphite provided one concrete comment on this PR: the PATCH flow for action items could not explicitly clear/unassign `project_id` because update logic only ran when the value was not `None`.
+>
+> My assessment of the comment:
+> - Type: correctness / potential edge-case behavior
+> - Quality: useful and specific
+> - Action taken: recorded as a valid follow-up item and included in review notes for API patch semantics.
 
 ## Task 2: Extend extraction logic
 a. Links to relevant commits/issues
@@ -69,7 +74,11 @@ b. PR Description
 > - Result: all tests passed.
 
 c. Graphite Diamond generated code review
-> TODO after Graphite run: add 2-4 key comments, including whether the AI caught extraction false-positive/false-negative risks.
+> No additional Graphite comments were generated on this PR.
+>
+> Interpretation:
+> - Either no actionable issues were detected in this diff, or the review did not emit additional findings beyond checks.
+> - I still performed manual review on regex precision/recall and dedup behavior.
 
 ## Task 3: Try adding a new model and relationships
 a. Links to relevant commits/issues
@@ -98,7 +107,11 @@ b. PR Description
 > - Result: all tests passed.
 
 c. Graphite Diamond generated code review
-> TODO after Graphite run: add comments related to model relationships, integrity checks, and route consistency.
+> No additional Graphite comments were generated on this PR.
+>
+> Interpretation:
+> - No model/relationship issues were surfaced by AI review for this diff.
+> - Manual review remained the main signal for relation integrity and endpoint consistency.
 
 ## Task 4: Improve tests for pagination and sorting
 a. Links to relevant commits/issues
@@ -125,27 +138,29 @@ b. PR Description
 > - Result: all tests passed (`10 passed`).
 
 c. Graphite Diamond generated code review
-> TODO after Graphite run: summarize comments on test completeness, edge-case coverage, and potential flaky patterns.
+> No additional Graphite comments were generated on this PR.
+>
+> Interpretation:
+> - AI review did not flag test-coverage issues in this change set.
+> - I relied on manual review to verify assertion strength and edge-case coverage.
 
 ## Brief Reflection 
 a. The types of comments you typically made in your manual reviews (e.g., correctness, performance, security, naming, test gaps, API shape, UX, docs).
 > My manual review comments usually focused on correctness and API contract clarity first (status codes, validation semantics, missing-resource behavior), then maintainability (naming, route consistency, and schema readability), and finally test gaps (edge cases for invalid sort, whitespace-only input, and relation integrity). I also looked for practical robustness issues such as deduplication logic and accidental fallback behavior.
 
 b. A comparison of **your** comments vs. **Graphite’s** AI-generated comments for each PR.
-> My own review comments were stronger on expected behavior and endpoint contract intent, while AI comments are likely to be stronger on consistency checks and potential missed edge cases.
+> Task 1: Graphite produced one concrete edge-case comment (PATCH unassign `project_id` semantics), while my manual comments were broader around validation consistency and error shape. Here Graphite was better at pinpointing a narrow behavioral gap.
 >
-> Planned PR-by-PR comparison format used in this write-up:
-> - Task 1: compare manual comments on invalid input and error semantics vs. AI comments on schema strictness and route consistency.
-> - Task 2: compare manual comments on extraction precision/recall tradeoffs vs. AI comments on regex edge cases and dedup behavior.
-> - Task 3: compare manual comments on relation design choices vs. AI comments on referential integrity and duplicate-name handling.
-> - Task 4: compare manual comments on coverage intent vs. AI comments on missing edge scenarios and assertion robustness.
+> Task 2: Graphite produced no extra comments. My manual review contributed the main feedback on extraction precision/recall tradeoffs and dedup expectations.
+>
+> Task 3: Graphite produced no extra comments. My manual review remained primary for relationship design and endpoint consistency checks.
+>
+> Task 4: Graphite produced no extra comments. My manual review drove confidence in test coverage quality (skip/limit/sort/error-path assertions).
 
 c. When the AI reviews were better/worse than yours (cite specific examples)
-> AI review is expected to be better when scanning for broad consistency and checklist-like omissions (for example, spotting an untested sort-path or an inconsistent validation pattern).
+> Better example: In PR Task 1 (`/pull/2`), Graphite highlighted a specific PATCH edge case where `project_id` could not be explicitly cleared. That was more precise than my initial high-level validation review.
 >
-> Manual review is usually better when judging project-specific intent and acceptable tradeoffs (for example, deciding whether a stricter validation rule is correct for this assignment's API contract).
->
-> TODO after Graphite run: replace this with concrete examples copied from actual PR comments.
+> Worse/limited example: In PR Task 2, 3, and 4, Graphite did not provide additional comments. In those PRs, manual review gave more practical value for deciding whether behavior and tests matched assignment intent.
 
 d. Your comfort level trusting AI reviews going forward and any heuristics for when to rely on them.
 > I am comfortable using AI review as a second-pass reviewer for consistency checks and broad issue scanning, but I do not fully trust it for product-context or intent-sensitive decisions. My current heuristic is: trust AI for mechanical checks (validation, missing tests, obvious edge cases), and rely on manual review for behavior expectations, tradeoffs, and domain-specific correctness.
